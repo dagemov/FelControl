@@ -1,0 +1,35 @@
+﻿@model FelControl.UserAdress
+@{
+	ViewBag.Title = "Details";
+}
+
+<ul class="breadcrumb">
+	<li><a href="\">Tables</a> <span class="divider">/</span></li>
+	<li>@Html.ActionLink("UserAdresses", "Index", "UserAdresses") <span class="divider">/</span></li>
+	<li class="active">Details</li>
+</ul>
+<div class="row">
+	<div class="span4">
+		<table class="table table-bordered table-striped table-condensed table-hover pull-left">
+			<tr>
+				<td>@Html.LabelFor(x => x.adress)</td>
+				<td>@Model.adress</td>
+			</tr>
+			<tr>
+				<td>@Html.LabelFor(x => x.User)</td>
+		<td>
+			<a href="@Url.Action("Details", "Users", new { Id = Model.UserId })"><small>View</small></a>
+		</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="row">
+	<div class="span4">
+		<div class="btn-group">
+			<a href="@Url.Action("Edit", new { Id = Model.Id })" class="btn"><i class="icon-pencil"></i> Edit</a>
+			<a href="@Url.Action("Delete", new { Id = Model.Id })" class="btn"><i class="icon-trash"></i> Delete</a>
+		</div>
+		@Html.ActionLink("Back to List", "Index", null, new { @class = "pull-right" })
+	</div>
+</div>

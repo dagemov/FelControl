@@ -1,0 +1,32 @@
+﻿@model FelControl.User
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="control-group">
+	@Html.LabelFor(model => model.Name, new { @class = "control-label" })
+	<div class="controls">
+		@Html.EditorFor(model => model.Name)
+		@Html.ValidationMessageFor(model => model.Name)
+	</div>
+</div>
+<div class="control-group">
+	@Html.LabelFor(model => model.LastName, new { @class = "control-label" })
+	<div class="controls">
+		@Html.EditorFor(model => model.LastName)
+		@Html.ValidationMessageFor(model => model.LastName)
+	</div>
+</div>
+<div class="control-group">
+	@Html.LabelFor(model => model.TazId, new { @class = "control-label" })
+	<div class="controls">
+		@Html.EditorFor(model => model.TazId)
+		@Html.ValidationMessageFor(model => model.TazId)
+	</div>
+</div>
+<div class="control-group">
+	@Html.LabelFor(model => model.HourValue, new { @class = "control-label" })
+	<div class="controls">
+		@Html.EditorFor(model => model.HourValue)
+		@Html.ValidationMessageFor(model => model.HourValue)
+	</div>
+</div>

@@ -1,0 +1,25 @@
+﻿@model FelControl.Schedule
+@{
+	ViewBag.Title = "Create";
+}
+
+<ul class="breadcrumb">
+	<li><a href="\">Tables</a> <span class="divider">/</span></li>
+	<li>@Html.ActionLink("Schedules", "Index", "Schedules") <span class="divider">/</span></li>
+	<li class="active">Create</li>
+</ul>
+
+@using (Html.BeginForm("Create", "Schedules", FormMethod.Post, new { @class = "form-horizontal" })) {
+	@Html.ValidationSummary(true)
+	<fieldset>
+
+		@Html.Partial("_CreateOrEdit", Model)
+
+		<div class="control-group">
+			<div class="controls">
+				<input type="submit" value="Create" class="btn btn-success" />
+				@Html.ActionLink("Cancel", "Index", null, new { @class = "btn" })
+			</div>
+		</div>
+	</fieldset>
+}

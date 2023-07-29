@@ -1,0 +1,46 @@
+﻿@model FelControl.Service
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="control-group">
+	@Html.LabelFor(model => model.Name, new { @class = "control-label" })
+	<div class="controls">
+		@Html.EditorFor(model => model.Name)
+		@Html.ValidationMessageFor(model => model.Name)
+	</div>
+</div>
+<div class="control-group">
+	@Html.LabelFor(model => model.Description, new { @class = "control-label" })
+	<div class="controls">
+		@Html.EditorFor(model => model.Description)
+		@Html.ValidationMessageFor(model => model.Description)
+	</div>
+</div>
+<div class="control-group">
+	@Html.LabelFor(model => model.ImagenPrincipal, new { @class = "control-label" })
+	<div class="controls">
+		@Html.EditorFor(model => model.ImagenPrincipal)
+		@Html.ValidationMessageFor(model => model.ImagenPrincipal)
+	</div>
+</div>
+<div class="control-group">
+	@Html.LabelFor(model => model.Price, new { @class = "control-label" })
+	<div class="controls">
+		@Html.EditorFor(model => model.Price)
+		@Html.ValidationMessageFor(model => model.Price)
+	</div>
+</div>
+<div class="control-group">
+	@Html.LabelFor(model => model.ContractService, new { @class = "control-label" })
+	<div class="controls">
+		@Html.EditorFor(model => model.ContractService)
+		@Html.ValidationMessageFor(model => model.ContractService)
+	</div>
+</div>
+<div class="control-group">
+	@Html.LabelFor(model => model.Client, new { @class = "control-label" })
+	<div class="controls">
+		@Html.DropDownListFor(model => model.ClientId, (IEnumerable<SelectListItem>)ViewBag.Client)
+		@Html.ValidationMessageFor(model => model.Client)
+	</div>
+</div>

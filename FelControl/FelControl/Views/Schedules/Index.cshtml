@@ -1,0 +1,109 @@
+﻿@model FelControl.Schedule
+@{
+	ViewBag.Title = "Schedules";
+}
+
+<ul class="breadcrumb">
+	<li><a href="\">Tables</a> <span class="divider">/</span></li>
+	<li class="active">Schedules</li>
+</ul>
+
+@{
+	Func<string, object> routeValuesSortBy = (sortBy) => new {
+		page = ViewBag.Page,
+		pageSize = ViewBag.PageSize,
+		sortBy = sortBy,
+		sortDesc = ViewBag.SortBy != sortBy || ViewBag.SortDesc != null && ViewBag.SortDesc == true ? null : (object)true
+		
+	};
+
+	Func<int, object> routeValuesPage = (page) => new {
+		page = page,
+		pageSize = ViewBag.PageSize,
+		sortBy = ViewBag.SortBy,
+		sortDesc = ViewBag.SortDesc
+		
+	};
+
+	Func<object, string> formatValue = (value) => {
+		if (value == null)
+			return string.Empty;
+		string strValue = Convert.ToString(value);
+		if (strValue.Length > 20)
+			strValue = strValue.Substring(0, 20) + "...";
+		return strValue;
+	};
+}
+
+<script type="text/javascript">
+	function submitFilterForm(index, value) {
+		var f = document.getElementById('filterform');
+		f.elements[index].value = value;
+		f.submit();
+	}
+</script>
+
+<div class="row">
+	<div class="span8">
+	</div>
+	<div class="span4">
+		@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary pull-right" })
+	</div>
+</div>
+
+<table class="table table-bordered table-striped table-condensed table-hover">
+	<thead>
+		<tr>
+			<th></th>
+			<th>
+				<a href="@Url.Action("Index", routeValuesSortBy("Id"))"><small>@Html.DisplayNameFor(model => model.Id)</small></a>
+			</th>
+			<th>
+				<a href="@Url.Action("Index", routeValuesSortBy("BeginHour"))"><small>@Html.DisplayNameFor(model => model.BeginHour)</small></a>
+			</th>
+			<th>
+				<a href="@Url.Action("Index", routeValuesSortBy("EndHour"))"><small>@Html.DisplayNameFor(model => model.EndHour)</small></a>
+			</th>
+		</tr>
+	</thead>
+@foreach (var item in ViewBag.Entities) {
+	<tr>
+
+		<td>
+			<div class="btn-group">
+				<a href="@Url.Action("Edit", new { Id = item.Id })" class="btn btn-mini"><i class="icon-pencil"></i></a>
+				<a href="@Url.Action("Details", new { Id = item.Id })" class="btn btn-mini"><i class="icon-info-sign"></i></a>
+				<a href="@Url.Action("Delete", new { Id = item.Id })" class="btn btn-mini"><i class="icon-trash"></i></a>
+			</div>
+		</td>
+		<td>
+			<small>@formatValue(item.Id)</small>
+		</td>
+		<td>
+			<small>@formatValue(item.BeginHour)</small>
+		</td>
+		<td>
+			<small>@formatValue(item.EndHour)</small>
+		</td>
+	</tr>
+}
+</table>
+
+@if (ViewBag.PaginationData != null) {
+	int currentPage = ViewData.ContainsKey("Page") ? ViewBag.Page : 1;
+<div>
+	<ul class="pagination pagination-centered pagination-small">
+	@foreach (Tuple<string, bool, int> pageTuple in ViewBag.PaginationData) {
+		if (!pageTuple.Item2) {
+			<li class="disabled"><span>@pageTuple.Item1</span></li>
+		}
+		else if (pageTuple.Item3 == currentPage) {
+			<li class="active"><span>@pageTuple.Item1</span></li>
+		}
+		else {
+			 <li ><a href="@Url.Action("Index", routeValuesPage(pageTuple.Item3))">@pageTuple.Item1</a></li>
+		}
+	}
+	</ul>
+</div>
+}

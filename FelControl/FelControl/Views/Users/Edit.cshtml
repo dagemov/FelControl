@@ -1,0 +1,27 @@
+﻿@model FelControl.User
+@{
+	ViewBag.Title = "Edit";
+}
+
+<ul class="breadcrumb">
+	<li><a href="\">Tables</a> <span class="divider">/</span></li>
+	<li>@Html.ActionLink("Users", "Index", "Users") <span class="divider">/</span></li>
+	<li class="active">Edit</li>
+</ul>
+
+@using (Html.BeginForm("Create", "Users", FormMethod.Post, new { @class = "form-horizontal" })) {
+	@Html.ValidationSummary(true)
+	<fieldset>
+		<legend>User</legend>
+
+			@Html.HiddenFor(model => model.Id)
+			@Html.Partial("_CreateOrEdit", Model)
+
+		<div class="control-group">
+			<div class="controls">
+				<input type="submit" value="Save" class="btn btn-success" />
+				@Html.ActionLink("Cancel", "Index", null, new { @class = "btn" })
+			</div>
+		</div>
+	</fieldset>
+}

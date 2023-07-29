@@ -1,0 +1,34 @@
+﻿@model FelControl.ClientAdress
+@{
+	ViewBag.Title = "Delete";
+}
+
+<ul class="breadcrumb">
+	<li><a href="\">Tables</a> <span class="divider">/</span></li>
+	<li>@Html.ActionLink("ClientAdresses", "Index", "ClientAdresses") <span class="divider">/</span></li>
+	<li class="active">Delete</li>
+</ul>
+<div class="row">
+	<div class="span4">
+		<table class="table table-bordered table-striped table-condensed table-hover pull-left">
+			<tr>
+				<td>@Html.LabelFor(x => x.Adress)</td>
+				<td>@Model.Adress</td>
+			</tr>
+			<tr>
+				<td>@Html.LabelFor(x => x.Client)</td>
+		<td>
+			<a href="@Url.Action("Details", "Clients", new { Id = Model.ClientId })"><small>View</small></a>
+		</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="row">
+	<div class="span4">
+@using (Html.BeginForm()) {
+		<input type="submit" value="Delete" class="btn btn-danger" />
+		@Html.ActionLink("Cancel", "Index", null, new { @class = "btn" })
+}
+	</div>
+</div>

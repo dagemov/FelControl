@@ -1,0 +1,51 @@
+﻿@model FelControl.Service
+@{
+	ViewBag.Title = "Details";
+}
+
+<ul class="breadcrumb">
+	<li><a href="\">Tables</a> <span class="divider">/</span></li>
+	<li>@Html.ActionLink("Services", "Index", "Services") <span class="divider">/</span></li>
+	<li class="active">Details</li>
+</ul>
+<div class="row">
+	<div class="span4">
+		<table class="table table-bordered table-striped table-condensed table-hover pull-left">
+			<tr>
+				<td>@Html.LabelFor(x => x.Name)</td>
+				<td>@Model.Name</td>
+			</tr>
+			<tr>
+				<td>@Html.LabelFor(x => x.Description)</td>
+				<td>@Model.Description</td>
+			</tr>
+			<tr>
+				<td>@Html.LabelFor(x => x.ImagenPrincipal)</td>
+				<td>@Model.ImagenPrincipal</td>
+			</tr>
+			<tr>
+				<td>@Html.LabelFor(x => x.Price)</td>
+				<td>@Model.Price</td>
+			</tr>
+			<tr>
+				<td>@Html.LabelFor(x => x.ContractService)</td>
+				<td>@Model.ContractService</td>
+			</tr>
+			<tr>
+				<td>@Html.LabelFor(x => x.Client)</td>
+		<td>
+			<a href="@Url.Action("Details", "Clients", new { Id = Model.ClientId })"><small>View</small></a>
+		</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="row">
+	<div class="span4">
+		<div class="btn-group">
+			<a href="@Url.Action("Edit", new { Id = Model.Id })" class="btn"><i class="icon-pencil"></i> Edit</a>
+			<a href="@Url.Action("Delete", new { Id = Model.Id })" class="btn"><i class="icon-trash"></i> Delete</a>
+		</div>
+		@Html.ActionLink("Back to List", "Index", null, new { @class = "pull-right" })
+	</div>
+</div>

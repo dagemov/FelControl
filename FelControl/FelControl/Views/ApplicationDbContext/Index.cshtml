@@ -1,0 +1,40 @@
+﻿@{
+	ViewBag.Title = "Tables";
+}
+
+<ul class="breadcrumb">
+	<li class="active">Tables</li>
+</ul>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Table Name</th>
+		</tr>
+	</thead>
+
+	<tr>
+		<td>@Html.ActionLink("Users", "Index", "Users")</td>
+	</tr>
+	<tr>
+		<td>@Html.ActionLink("UserAdresses", "Index", "UserAdresses")</td>
+	</tr>
+	<tr>
+		<td>@Html.ActionLink("Clients", "Index", "Clients")</td>
+	</tr>
+	<tr>
+		<td>@Html.ActionLink("Services", "Index", "Services")</td>
+	</tr>
+	<tr>
+		<td>@Html.ActionLink("ClientAdresses", "Index", "ClientAdresses")</td>
+	</tr>
+	<tr>
+		<td>@Html.ActionLink("Schedules", "Index", "Schedules")</td>
+	</tr>
+	<tr>
+		<td>@Html.ActionLink("UserServices", "Index", "UserServices")</td>
+	</tr>
+	<tr>
+		<td>@Html.ActionLink("ServiceAdresses", "Index", "ServiceAdresses")</td>
+	</tr>
+</table>

@@ -1,0 +1,18 @@
+﻿@model FelControl.UserAdress
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="control-group">
+	@Html.LabelFor(model => model.adress, new { @class = "control-label" })
+	<div class="controls">
+		@Html.EditorFor(model => model.adress)
+		@Html.ValidationMessageFor(model => model.adress)
+	</div>
+</div>
+<div class="control-group">
+	@Html.LabelFor(model => model.User, new { @class = "control-label" })
+	<div class="controls">
+		@Html.DropDownListFor(model => model.UserId, (IEnumerable<SelectListItem>)ViewBag.User)
+		@Html.ValidationMessageFor(model => model.User)
+	</div>
+</div>
